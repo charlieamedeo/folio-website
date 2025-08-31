@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>info</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* Full height of the viewport */
+                margin: 0; /* Remove default margin */
+            }
+            p {
+                font-size: 24px; /* Increased font size for the paragraph */
+                font-style: italic; /* Retain italic style */
+                text-align: left; /* Center the text */
+                font-family: Arial;
+                max-width: 600px; /* Limit the width of the paragraph for better readability */
+                text-indent: 2em;
+                position: relative; /* Enable positioning for pseudo-element */
+            }
+            .clickable-symbol {
+                font-size: 48px; /* Make the symbols large */
+                position: absolute;
+                right: -60px; /* Position the symbols to the right of the paragraph */
+                top: 50%; /* Center the symbols vertically */
+                transform: translateY(-50%);
+                cursor: pointer; /* Change cursor to pointer */
+            }
+            div {
+                display: flex;
+                flex-direction: column; /* Stack paragraphs vertically */
+                text-align: center; /* Center the text inside the div */
+            }
+            p:nth-of-type(2) {
+                margin-top: 30px; /* Add spacing between the first and second paragraph */
+                margin-right: 270px; /* Add spacing to the right */
+                font-style: normal; /* Change the second paragraph to normal style */
+            }
+            a {
+                margin-right: 108px; /* Add spacing between links */
+            }
+            a:last-of-type {
+                margin-right: 0; /* Remove margin from the last link */
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+            <p>
+                charlie amedeo is an interdeciplinary artist currently based out of the poocono mountains. he graduated from purchase college with a bfa in printmaking. this website will mostly function as a visual and audio archive, as well as a place to dump various thoughts and ideas. 
+                <a href="https://www.instagram.com/privatefigure300">instagram</a> 
+                <a href="https://www.youtube.com/@charlieamedeo487">youtube</a> 
+                <a href="https://soundcloud.com/privatefigure">soundcloud</a>
+                <span class="clickable-symbol" onclick="goToLandingPage()">*</span>
+            </p>
+            <p>
+                contact: charlieamedeo@gmail.com
+                <span class="clickable-symbol" onclick="goToLandingPage()">&</span>
+            </p>
+        </div>
+        <script>
+            function goToLandingPage() {
+                window.location.href = 'landing page.html'; // Redirect to landing page.html
+            }
+        </script>
+    </body>
+</html>

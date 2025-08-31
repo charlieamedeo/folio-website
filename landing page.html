@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> charlie amedeo </title>
+  </head>
+  <body>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full height of the viewport */
+        margin: 0; /* Remove default margin */
+        flex-direction: row; /* Keep title and bullet points side by side */
+        background-color: #ffffff; /* Light background for contrast */
+        overflow: hidden; /* Prevent scrollbars from appearing */
+        position: relative; /* Needed for the squiggly line to circle around */
+        font-size: 20px; /* Increased base font size for scaling */
+      }
+  
+      .title { 
+        font-family: Arial;
+        font-size: 48px; /* Increased font size for the title */
+        font-style: italic; /* Retain italic style */
+        text-align: center;
+        margin-right: 50px; /* Increased spacing between the title and the list */
+      }
+  
+      .bullets {
+          font-style: italic;
+          list-style-type: none; /* Remove bullets */
+          padding: 0; /* Remove default padding */
+          text-align: left; /* Align list items to the left */
+          font-size: 24px; /* Increased font size for the list items */
+      }
+  
+      .bullets li {
+          margin-bottom: 10px; /* Increased spacing between list items */
+      }
+  
+      .bullets a {
+          text-decoration: none; /* Remove underline from links */
+          color: inherit; /* Inherit text color */
+      }
+  
+      .bullets a:hover {
+          text-decoration: underline; /* Add underline on hover */
+      }
+  
+      .squiggly-line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1200px; /* Increased size */
+        height: 1200px; /* Increased size */
+        transform: translate(-50%, -50%);
+        z-index: -1; /* Place behind the content */
+      }
+  
+      .squiggly-line path {
+        fill: none;
+        stroke: #000000; /* Black color for the line */
+        stroke-width: .3; /* Slightly thicker line */
+        stroke-linecap: square;
+        opacity: 0.15;
+        stroke-dasharray: 6000; /* Total length of the path */
+        stroke-dashoffset: 6000; /* Start with the line hidden */
+        animation: draw 25s linear infinite; /* Slower drawing and erasing animation */
+      }
+
+      .clock {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-family: Arial;
+      font-size: 20px;
+      font-style: italic;
+      color: #333;
+    }
+  
+      @keyframes draw {
+        0% {
+          stroke-dashoffset: 6000; /* Line is hidden */
+        }
+        70% {
+          stroke-dashoffset: 0; /* Line is fully drawn */
+        }
+        71% {
+          stroke-dashoffset: 0; /* Line stays fully drawn briefly */
+        }
+        100% {
+          stroke-dashoffset: -6000; /* Line is erased */
+        }
+      }
+  </style>
+  
+  <svg class="squiggly-line" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" preserveAspectRatio="none">
+    <!-- More complex and detailed squiggly shape -->
+    <path d="M75,150 
+             Q100,50 150,75 
+             Q200,100 225,150 
+             Q200,175 175,160 
+             Q150,140 125,160 
+             Q100,180 75,150 
+             Q50,120 75,100 
+             Q100,80 125,100 
+             Q150,120 175,100 
+             Q200,80 225,100 
+             Q250,120 225,150 
+             Q200,200 150,225 
+             Q100,250 75,200 
+             Q50,175 75,150 
+             Q100,125 125,140 
+             Q150,160 175,140 
+             Q200,120 225,140 
+             Q250,160 225,200 
+             Q200,240 150,260 
+             Q100,280 75,240 
+             Q50,200 75,150 Z" />
+  </svg>
+  
+  <p class="title">charlie amedeo</p>
+  <ul class="bullets">
+      <li><a href="info.html">info &#162;</a></li>
+      <li><a href="drawings.html">drawings &#163;</a></li>
+      <li><a href="">wall hangings &#165;</a></li>
+      <li><a href="">work for others &#167;</a></li>
+      <li><a href="">online journal &#8364;</a></li>
+      <li><a href="">music &#956;</a></li>
+      <li><a href="">cv &#9829;</a></li>
+  </ul>
+  <div class="clock" id="clock"></div>
+  <script>
+    function updateClock() {
+        const clockElement = document.getElementById('clock');
+        const now = new Date();
+        const time = now.toLocaleTimeString();
+        const date = now.toLocaleDateString();
+        clockElement.textContent = `${date} ${time}`;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initialize the clock immediately
+    updateClock();
+</script>
+</body>
+</html>
+

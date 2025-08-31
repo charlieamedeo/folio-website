@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>drawings</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center; /* Align items at the center */
+                min-height: 100vh; /* Allow the page to grow beyond the viewport height */
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #ffffff;
+                overflow-y: auto; /* Enable scrolling */
+                position: relative; /* Ensure positioned elements are relative to the body */
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                width: 1350px; /* Set a fixed width for the list */
+                position: relative; /* Ensure the list's position is accounted for */
+            }
+
+            li {
+                cursor: pointer;
+                padding: 10px 15px;
+                font-size: 40px;
+                text-align: center;
+                margin-bottom: 10px;
+                border: none;
+                background-color: transparent;
+                white-space: nowrap; /* Prevent text wrapping */
+            }
+
+            li::after {
+                content: "▼"; /* Arrow content */
+                font-size: 40px;
+            }
+
+            .dropdown-content {
+                display: none; /* Hidden by default */
+                position: static; /* Make dropdown part of the document flow */
+                width: 100%; /* Make it span the full width of the list item */
+                background-color: #fff;
+                padding: 10px;
+                z-index: 1; /* Ensure it appears above other elements */
+                border: none; /* Explicitly remove any border */
+                box-shadow: none; /* Remove shadow that may resemble a border */
+            }
+
+            .dropdown-content img {
+                width: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .dropdown-content.active {
+                display: block; /* Show dropdown when active */
+            }
+
+            .floating-symbol {
+                position: absolute;
+                font-size: 120px;
+                padding: 10px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="floating-symbol-container">
+            <div class="floating-symbol" onclick="goToLandingPage()">*</div>
+            <div class="floating-symbol" onclick="goToLandingPage()">&</div>
+            <div class="floating-symbol" onclick="goToLandingPage()">#</div>
+        </div>
+        <ul id="list-container">
+            <li onclick="toggleDropdown(this)">
+                untitled drawing (03/16/2025)
+                <div class="dropdown-content">
+                    <img src="image_5.jpeg" alt="Image 3">
+                </div>
+            </li>
+            <li onclick="toggleDropdown(this)">
+                untitled drawing (12/28/2024)
+                <div class="dropdown-content">
+                    <img src="image_1.jpg" alt="Image 1">
+                </div>
+            </li>
+            <li onclick="toggleDropdown(this)">
+                untitled drawing (12/16/2024)
+                <div class="dropdown-content">
+                    <img src="image_2.png" alt="Image 2">
+                </div>
+            </li>
+            <li onclick="toggleDropdown(this)">
+                untitled drawing (10/11/2024)
+                <div class="dropdown-content">
+                    <img src="image_3.jpeg" alt="Image 3">
+                </div>
+            </li>
+            <li onclick="toggleDropdown(this)">
+                untitled drawing (09/10/2024)
+                <div class="dropdown-content">
+                    <img src="image_4.jpeg" alt="Image 3">
+                </div>
+            </li>
+            <li onclick="toggleDropdown(this)">
+                untitled drawing (07/23/2024)
+                <div class="dropdown-content">
+                    <img src="image_6.jpeg" alt="Image 3">
+                </div>
+            </li>
+        </ul>
+
+        <script>
+            function toggleDropdown(element) {
+                const dropdown = element.querySelector('.dropdown-content');
+                dropdown.classList.toggle('active');
+            }
+
+            function goToLandingPage() {
+                window.location.href = 'landing page.html'; // Redirect to landing page.html
+            }
+
+            function setRandomPosition() {
+                const symbols = document.querySelectorAll('.floating-symbol');
+                const listContainer = document.getElementById('list-container');
+                const listRect = listContainer.getBoundingClientRect();
+
+                symbols.forEach(symbol => {
+                    let x, y;
+
+                    do {
+                        x = Math.random() * window.innerWidth;
+                        y = Math.random() * window.innerHeight;
+                    } while (
+                        x >= listRect.left &&
+                        x <= listRect.right &&
+                        y >= listRect.top &&
+                        y <= listRect.bottom
+                    );
+
+                    symbol.style.left = `${x}px`;
+                    symbol.style.top = `${y}px`;
+                });
+            }
+
+            // Set random position initially and every 5 seconds
+            setRandomPosition();
+            setInterval(setRandomPosition, 5000);
+        </script>
+    </body>
+</html>
